@@ -16,6 +16,7 @@
     android:paddingLeft="5dp"
     android:layout_marginTop="150dp"
     android:inputType="phone"
+    android:fontFamily="sans-serif-light"
     android:maxLength="10"
     android:background="@drawable/edit_bg"/>
 
@@ -25,6 +26,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:paddingLeft="5dp"
+        android:fontFamily="sans-serif-light"
         android:inputType="textPassword"
         android:background="@drawable/edit_bg"/>
     <Button
@@ -33,6 +35,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:text="Login"
+        android:fontFamily="sans-serif-light"
         android:textColor="@android:color/white"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:backgroundTint="@color/colorPrimaryDark"/>
