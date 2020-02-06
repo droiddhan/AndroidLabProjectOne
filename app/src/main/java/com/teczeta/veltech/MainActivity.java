@@ -2,65 +2,65 @@ package com.teczeta.veltech;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText etPhone, etPassword;
+    Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        System.out.println("Dhan "+"OnCreate");
-        Toast.makeText(this, "OnCreate", Toast.LENGTH_SHORT).show();
-    }
+        etPhone = findViewById(R.id.etPhone);
+        etPassword = findViewById(R.id.etPassword);
+        btnLogin = findViewById(R.id.btnLogin);
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        System.out.println("Dhan "+"OnStart");
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        Toast.makeText(this, "OnStart", Toast.LENGTH_SHORT).show();
+                String phone, password;
 
-    }
+                phone = etPhone.getText().toString();
+                password = etPassword.getText().toString();
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        System.out.println("Dhan "+"OnResume");
 
-        Toast.makeText(this, "OnResume", Toast.LENGTH_SHORT).show();
+                if (!phone.isEmpty() && !password.isEmpty()) {
 
-    }
+                    if (phone.equalsIgnoreCase("9876543210") && password.equalsIgnoreCase("password")) {
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "OnPause", Toast.LENGTH_SHORT).show();
 
-    }
+                        Intent intent = new Intent(MainActivity.this, SuccessActivity.class);
+                        startActivity(intent);
 
-    @Override
-    protected void onStop() {
-        super.onStop();
+                    } else {
 
-        Toast.makeText(this, "OnStop", Toast.LENGTH_SHORT).show();
+                        //Clear Both Phone and Password fields
+                        etPhone.setText("");
+                        etPassword.setText("");
 
-    }
+                        //Move cursor to phone fiels
+                        etPhone.requestFocus();
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "OnDestroy", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Pls Enter Correct Phone and Password", Toast.LENGTH_SHORT).show();
 
-    }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
+                    }
 
-        Toast.makeText(this, "OnRestart", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Pls Enter Phone and Password", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
     }
 }
